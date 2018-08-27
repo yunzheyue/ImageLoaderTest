@@ -48,6 +48,7 @@ public class ImageLoader {
         mExecutorService.submit(new Runnable() {
             @Override
             public void run() {
+                //进行联网加载图片
                 final Bitmap bitmap = downLoadImage(url);
                 if (bitmap == null) {
                     return;
@@ -68,6 +69,7 @@ public class ImageLoader {
 
     }
 
+    //联网加载图片
     private Bitmap downLoadImage(String imageUrl) {
         Bitmap bitmap = null;
         HttpURLConnection urlConnection = null;
