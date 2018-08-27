@@ -21,24 +21,30 @@ import java.util.concurrent.Executors;
  * description :
  */
 
-
 public class ImageLoader {
+    public static final ImageLoader imageLoader = new ImageLoader();
     private ImageCache imageCache;
+    //    创建线程池
     private ExecutorService mExecutorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-    public ImageLoader() {
+    private ImageLoader() {
     }
+
+    public static ImageLoader getInstence() {
+        return imageLoader;
+    }
+
     public void setImageCache(ImageCache imageCache) {
         this.imageCache = imageCache;
     }
-    public void displayImage(final Context context, final String url, final ImageView imageView) {
 
+    public void displayImage(final Context context, final String url, final ImageView imageView) {
         if (imageCache.get(url) != null) {
             imageView.setImageBitmap(imageCache.get(url));
             return;
         }
         imageView.setTag(url);
-        Log.e("TAG","load picture from net");
+        Log.e("TAG", "load picture from net");
         mExecutorService.submit(new Runnable() {
             @Override
             public void run() {
