@@ -1,6 +1,5 @@
 package com.example.administrator.android_test_one;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -22,11 +21,14 @@ public class MainActivity extends AppCompatActivity {
         ImageLoader imageLoader = ImageLoader.getInstence();
         imageLoader.setImageCache(new MemoryCache());
         imageLoader.displayImage(this, url, imageView);
+//
+//        ImageLoader imageLoader1 = ImageLoader.getInstence();
+//        imageLoader1.setImageCache(new DiskCache());
+//        imageLoader1.displayImage(this, url1, imageView2);
 
-        ImageLoader imageLoader1 = ImageLoader.getInstence();
-        imageLoader1.setImageCache(new DiskCache());
-        imageLoader1.displayImage(this, url1, imageView2);
-
+//    使用builder设计模式
+        ImageLoader.builder builder = new ImageLoader.builder();
+        builder.setImageCache(new DiskCache()).displayImage(this, url1, imageView2);
 
         ImageLoader imageLoader2 = ImageLoader.getInstence();
 //        使用自定义的图片缓存

@@ -85,4 +85,23 @@ public class ImageLoader {
         return bitmap;
     }
 
+    public static class builder {
+
+        private final ImageLoader imageLoader;
+
+        public builder() {
+            imageLoader = ImageLoader.getInstence();
+        }
+
+        public builder setImageCache(ImageCache imageCache) {
+            imageLoader.setImageCache(imageCache);
+            return this;
+        }
+        public builder displayImage(final Context context, final String url, final ImageView imageView) {
+            imageLoader.displayImage(context, url, imageView);
+            return this;
+        }
+
+    }
+
 }
